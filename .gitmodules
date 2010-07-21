@@ -1,0 +1,3 @@
+[submodule "libs/PHPThumb"]
+	path = libs/PHPThumb
+	url = http://github.com/masterexploder/PHPThumb.git
