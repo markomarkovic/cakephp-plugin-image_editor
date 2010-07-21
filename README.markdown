@@ -1,2 +1,3 @@
-# CakePHP Thumbnailer plugin
-Creates image thumbnails using phpThumb
+# CakePHP Image Editor plugin
+
+* uses PHPThumb for image manipulation
