@@ -109,5 +109,8 @@ Because of the rules in the .htaccess file, if the file exists, web server is si
 
 and those actions with other parameters are passed to ImageEditor which generates the thumbnail, saves it to the target file and serves it.
 
+## Licence
+
+Released under The MIT License
 
 [1]: http://phpthumb.gxdlabs.com/
