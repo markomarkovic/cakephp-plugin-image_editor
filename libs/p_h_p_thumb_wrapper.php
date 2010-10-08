@@ -21,7 +21,11 @@ class PHPThumbWrapper extends Folder {
 
 		// Going through all the actions
 		foreach ($actions as $action => $params) {
-			$thumb->$action(@$params[0], @$params[1], @$params[3], @$params[4]);
+			if (is_array($params)) {
+				$thumb->$action(@$params[0], @$params[1], @$params[3], @$params[4]);
+			} else {
+				$thumb->$action(@$params);
+			}
 		}
 
 		// Creating the folder to store the thumbs
