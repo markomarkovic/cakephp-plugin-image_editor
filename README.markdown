@@ -87,19 +87,19 @@ If the file is updated, you simply delete the folder with its thumbnails and the
 
 ## How it works?
 
- The helper generates, for example, a IMG tag that looks like this:
+ The helper generates, using this code for example:
 
-    <img src="/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjpbMTgwXSwiYWRhcHRpdmVSZXNpemUiOlszMDAsMzAwXX0=.png" width="200" height="200" alt="Upside down cake" />
+    <?php echo $this->Image->show('/img/cake.icon.png', array('width' => 200, 'height' => 200, 'alt' => 'Upside down cake'), array('rotateImageNDegrees' => 120, 'adaptiveResize' => array(300, 300))); ?>
 
-Because of the rules in the .htaccess file, if the file exists, web server is simply going to serve it so the image generation is not triggered. If it's not there, the plugin controller is called. The string *eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjpbMTgwXSwiYWRhcHRpdmVSZXNpemUiOlszMDAsMzAwXX0=* is decoded to
+  a IMG tag that looks like this:
+
+    <img src="http://cms/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19.png" width="200" height="200" alt="Upside down cake" />
+
+Because of the rules in the .htaccess file, if the file exists, web server is simply going to serve it so the image generation is not triggered. If it's not there, the plugin controller is called. The string *eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19* is decoded to
 
     stdClass Object
     (
-        [rotateImageNDegrees] => Array
-            (
-                [0] => 180
-            )
-
+        [rotateImageNDegrees] => 120
         [adaptiveResize] => Array
             (
                 [0] => 300
