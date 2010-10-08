@@ -87,11 +87,27 @@ If the file is updated, you simply delete the folder with its thumbnails and the
 
 ## How it works?
 
- The helper generates a IMG tag that looks like this:
+ The helper generates, for example, a IMG tag that looks like this:
 
     <img src="/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjpbMTgwXSwiYWRhcHRpdmVSZXNpemUiOlszMDAsMzAwXX0=.png" width="200" height="200" alt="Upside down cake" />
 
-Because of the rules in the .htaccess file, if the file exists, web server is simply going to serve it so the image generation is not triggered. If it's not there, the plugin is called and the thumbnail is generated, saved to the target file and served.
+Because of the rules in the .htaccess file, if the file exists, web server is simply going to serve it so the image generation is not triggered. If it's not there, the plugin controller is called. The string *eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjpbMTgwXSwiYWRhcHRpdmVSZXNpemUiOlszMDAsMzAwXX0=* is decoded to
+
+    stdClass Object
+    (
+        [rotateImageNDegrees] => Array
+            (
+                [0] => 180
+            )
+
+        [adaptiveResize] => Array
+            (
+                [0] => 300
+                [1] => 300
+            )
+    )
+
+and those actions with other parameters are passed to ImageEditor which generates the thumbnail, saves it to the target file and serves it.
 
 
 [1]: http://phpthumb.gxdlabs.com/
