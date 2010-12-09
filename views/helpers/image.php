@@ -22,6 +22,8 @@ class ImageHelper extends HtmlHelper {
 	 * @param array $editActions Array of the actions with their parameters as described in the PHPThumb documentation: http://github.com/masterexploder/PHPThumb/wiki/GD-API
 	 *
 	 * # adaptiveResize ($width, $height)
+	 * # adaptiveResizePercent ($width, $height, $percent = 50)
+	 * # adaptiveResizeQuadrant ($width, $height, $quadrant = 'C')
 	 * # crop ($startX, $startY, $cropWidth, $cropHeight)
 	 * # cropFromCenter ($cropWidth, $cropHeight = null)
 	 * # resize ($maxWidth, $maxHeight)
