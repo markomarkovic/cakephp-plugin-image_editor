@@ -38,6 +38,14 @@ class ImageEditor {
 		$fileType = $info['extension'];
 		$actions = json_decode(base64_decode($info['filename']));
 
+		if (!file_exists($srcPath)) {
+			$defaultImage = Configure::read('ImageEditor.defaultImage');
+			if (!file_exists($defaultImage)) {
+				$defaultImage = App::pluginPath('image_editor').DS.'webroot'.DS.'img'.DS.'no_image.png';
+			}
+			$srcPath = $defaultImage;
+		}
+
 		$this->lib->processImage($srcPath, $dstPath, $fileType, $actions);
 	}
 

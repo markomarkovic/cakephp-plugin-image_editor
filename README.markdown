@@ -29,6 +29,7 @@ or put the code from it directly into your bootstrap:
     ...
     Configure::write('ImageEditor.cacheDir', 'thumbs'); // The folder (under WWW_ROOT) that's going to contain all the processed images.
     Configure::write('ImageEditor.library', 'PHPThumb'); // The image processing library
+    Configure::write('ImageEditor.defaultImage', App::pluginPath('image_editor').DS.'webroot'.DS.'img'.DS.'no_image.png'); // Optional: The default image that's going to be used if the source image is not available (full path)
 
     /**
      * PHPThumb Options
