@@ -14,6 +14,14 @@ First download or checkout the code for the ImageEditor and for the [PHPThumb][1
                    /src
              /views
 
+If you're using git, these steps are easy to do like this:
+
+    $ cd /path/of/your/app/plugins/
+    $ git clone git://github.com/markomarkovic/cakephp-plugin-image_editor.git image_editor
+    $ cd image_editor
+    $ git submodule init
+    $ git submodule update
+
 In order to start using it, you'll need to tweak a few files:
 
 ####Bootstrap
