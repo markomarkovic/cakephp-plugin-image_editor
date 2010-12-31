@@ -1,5 +1,7 @@
 <?php
-class ImageHelper extends HtmlHelper {
+class ImageHelper extends AppHelper {
+
+	var $helpers = array('Html');
 
 	/**
 	 * Creates a IMG element with SRC that has all the actions encoded.
@@ -45,7 +47,8 @@ class ImageHelper extends HtmlHelper {
 			$path,
 			$thumbName
 		);
-		return $this->image($path, $options);
+		return $this->Html->image($path, $options);
 	}
 
 }
+
