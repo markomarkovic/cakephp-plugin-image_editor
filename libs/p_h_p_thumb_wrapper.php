@@ -35,4 +35,15 @@ class PHPThumbWrapper extends Folder {
 		$thumb->show();
 	}
 
+	/**
+	 * Returns the image dimensions
+	 *
+	 * @param string $srcPath a path to the image
+	 * @returns array
+	 */
+	function getDimensions($srcPath) {
+		$sourceImage = PhpThumbFactory::create($srcPath, Configure::read('ImageEditor.PHPThumb'));
+		return $sourceImage->getCurrentDimensions();
+	}
+
 }

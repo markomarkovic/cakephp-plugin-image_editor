@@ -49,4 +49,14 @@ class ImageEditorComponent extends Object {
 		$this->lib->processImage($srcPath, $dstPath, $fileType, $actions);
 	}
 
+	/**
+	 * Returns the image dimensions
+	 *
+	 * @param string $srcPath a path to the image
+	 * @returns array
+	 */
+	function getDimensions($srcPath) {
+		return $this->lib->getDimensions($srcPath);
+	}
+
 }
