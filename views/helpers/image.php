@@ -1,7 +1,4 @@
 <?php
-
-App::import('Lib', 'ImageEditor.ImageEditor');
-
 class ImageHelper extends HtmlHelper {
 
 	/**
