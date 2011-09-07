@@ -47,6 +47,9 @@ class ImageHelper extends AppHelper {
 			$path,
 			$thumbName
 		);
+
+		$path = str_replace('://', 'COLON_SLASH_SLASH', $path); // For remote images
+
 		return $this->Html->image($path, $options);
 	}
 

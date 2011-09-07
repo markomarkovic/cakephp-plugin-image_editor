@@ -27,7 +27,12 @@ class ImageEditorComponent extends Object {
 		}
 
 		$info = pathinfo($imageURL);
-		$srcPath = WWW_ROOT . $info['dirname'];
+		if (strpos($info['dirname'], 'COLON_SLASH_SLASH') > 0) {
+			$srcPath = str_replace('COLON_SLASH_SLASH', '://', $info['dirname']);
+			$isRemoteFile = true;
+		} else {
+			$srcPath = WWW_ROOT . $info['dirname'];
+		}
 		$dstPath = sprintf('%s%s/%s/%s.%s',
 			WWW_ROOT,
 			$this->cacheDir,
@@ -38,7 +43,7 @@ class ImageEditorComponent extends Object {
 		$fileType = $info['extension'];
 		$actions = json_decode(base64_decode($info['filename']));
 
-		if (!file_exists($srcPath)) {
+		if (!file_exists($srcPath) && !isset($isRemoteFile)) {
 			$defaultImage = Configure::read('ImageEditor.defaultImage');
 			if (!file_exists($defaultImage)) {
 				$defaultImage = App::pluginPath('image_editor').DS.'webroot'.DS.'img'.DS.'no_image.png';
