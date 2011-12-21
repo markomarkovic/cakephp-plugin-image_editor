@@ -1,6 +1,8 @@
 # CakePHP Image Editor plugin
 
-## Instalation and configuration
+## Attention CakePHP 1.3 users, I've switched to 2.0 and this branch is no longer maintained.
+
+## Installation and configuration
 
 First download or checkout the code for the ImageEditor and for the [PHPThumb][1]. Put the PHPThumb folder inside image_editor/libs and put the image_editor in your app/plugins directory. The directory structure should look like this:
 
