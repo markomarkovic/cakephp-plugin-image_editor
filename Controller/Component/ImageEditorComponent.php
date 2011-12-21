@@ -1,5 +1,5 @@
 <?php
-class ImageEditorComponent extends Object {
+class ImageEditorComponent extends Component {
 
 	var $lib = null;
 	var $cacheDir = null;
@@ -7,7 +7,7 @@ class ImageEditorComponent extends Object {
 	function initialize(&$controller, $settings = array()) {
 		if (!isset($this->lib)) {
 			if (!$library = Configure::read('ImageEditor.library')) {
-				trigger_error(__d('image_editor', 'ImageEditor.library is not defined.', true), E_USER_ERROR);
+				trigger_error(__d('image_editor', 'ImageEditor.library is not defined.'), E_USER_ERROR);
 			}
 			$library .= 'Wrapper';
 
@@ -23,7 +23,7 @@ class ImageEditorComponent extends Object {
 	 */
 	function processImage($imageURL) {
 		if (!$this->cacheDir = Configure::read('ImageEditor.cacheDir')) {
-			trigger_error(__d('image_editor', 'ImageEditor.cacheDir is not defined.', true), E_USER_ERROR);
+			trigger_error(__d('image_editor', 'ImageEditor.cacheDir is not defined.'), E_USER_ERROR);
 		}
 
 		$info = pathinfo($imageURL);

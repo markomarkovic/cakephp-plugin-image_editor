@@ -11,7 +11,7 @@ class ImagesController extends AppController {
 	public function show() {
 		$this->autoRender = false;
 
-		$this->ImageEditor->processImage($this->params['url']['imageURL']);
+		$this->ImageEditor->processImage($this->request->params['url']['imageURL']);
 	}
 
 }

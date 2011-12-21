@@ -36,11 +36,11 @@ class ImageHelper extends AppHelper {
 	 */
 	function show($path, $options = array(), $editActions = array()) {
 		if (!$cacheDir = Configure::read('ImageEditor.cacheDir')) {
-			trigger_error(__d('image_editor', 'ImageEditor.cacheDir is not defined.', true), E_USER_ERROR);
+			trigger_error(__d('image_editor', 'ImageEditor.cacheDir is not defined.'), E_USER_ERROR);
 		}
 		$thumbName = base64_encode(json_encode($editActions)).'.'.pathinfo($path, PATHINFO_EXTENSION);
 		if (strlen($thumbName) > 254) {
-			trigger_error(__d('image_editor', 'Filename is too long for most Filesystems. Use less editActions.', true), E_USER_WARNING);
+			trigger_error(__d('image_editor', 'Filename is too long for most Filesystems. Use less editActions.'), E_USER_WARNING);
 		}
 		$path = sprintf('/%s/%s/%s',
 			$cacheDir,
