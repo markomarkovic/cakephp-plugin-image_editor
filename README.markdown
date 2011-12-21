@@ -65,7 +65,7 @@ Then, you'll need to add following code to your */app/webroot/.htaccess* file:
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteRule ^thumbs/(.*?)$ image_editor/images/show/?imageURL=$1 [QSA,L]
     #   Attention!   ^^^^^^ this should be the same as ImageEditor.cacheDir configuration option.
-    #   Don't forget to create this directory and make it writeable.
+    #   Don't forget to create this directory and make it writable.
 
     ### Cake default
         RewriteCond %{REQUEST_FILENAME} !-d
@@ -73,7 +73,7 @@ Then, you'll need to add following code to your */app/webroot/.htaccess* file:
         RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
     </IfModule>
 
-After that, you'll need to create and make writeable the **ImageEditor.cacheDir** directory and you're ready to start using the plugin!
+After that, you'll need to create and make writable the **ImageEditor.cacheDir** directory and you're ready to start using the plugin!
 
 
 ## Usage
@@ -102,7 +102,7 @@ If the file is updated, you simply delete the folder with its thumbnails and the
 
   a IMG tag that looks like this:
 
-    <img src="http://cms/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19.png" width="200" height="200" alt="Upside down cake" />
+    <img src="http://example.com/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19.png" width="200" height="200" alt="Upside down cake" />
 
 Because of the rules in the .htaccess file, if the file exists, web server is simply going to serve it so the image generation is not triggered. If it's not there, the plugin controller is called. The string *eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19* is decoded to
 
