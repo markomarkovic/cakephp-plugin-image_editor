@@ -2,55 +2,40 @@
 
 ## Instalation and configuration
 
-First download or checkout the code for the ImageEditor and for the [PHPThumb][1]. Put the PHPThumb folder inside image_editor/libs and put the image_editor in your app/plugins directory. The directory structure should look like this:
+First download or checkout the code for the ImageEditor and for the [PHPThumb][1]. Put the PHPThumb folder inside ImageEditor/Vendor and put the ImageEditor in your app/Plugin directory. The directory structure should look like this:
 
     /app
-       /plugins
-          /image_editor
-             /config
-             /controllers
-             /libs
+       /Plugin
+          /ImageEditor
+             /Config
+             /Controllers
+             /Lib
+             /Vendor
                 /PHPThumb
                    /src
-             /views
+             /View
 
 If you're using git, these steps are easy to do like this:
 
-    $ cd /path/of/your/app/plugins/
-    $ git clone git://github.com/markomarkovic/cakephp-plugin-image_editor.git image_editor
-    $ cd image_editor
+    $ cd /path/of/your/app/Plugin/
+    $ git clone git://github.com/markomarkovic/cakephp-plugin-image_editor.git ImageEditor
+    $ cd ImageEditor
+    $ git checkout 2.0
     $ git submodule init
     $ git submodule update
 
-In order to start using it, you'll need to tweak a few files:
 
-####Bootstrap
+####Load plugin
 
-First you'll need to configure some ImageEditor options. You can either include the */app/plugins/image_editor/config/bootstrap.php* file from your */app/config/bootstrap.php* file:
-
-    ...
-    // ImageEditor configuration
-    require APP.'plugins'.DS.'image_editor'.DS.'config'.DS.'bootstrap.php';
-    ...
-or put the code from it directly into your bootstrap:
+First you'll need to load the plugin from your */app/Config/bootstrap.php* file:
 
     ...
-    Configure::write('ImageEditor.cacheDir', 'thumbs'); // The folder (under WWW_ROOT) that's going to contain all the processed images.
-    Configure::write('ImageEditor.library', 'PHPThumb'); // The image processing library
-    Configure::write('ImageEditor.defaultImage', App::pluginPath('image_editor').DS.'webroot'.DS.'img'.DS.'no_image.png'); // Optional: The default image that's going to be used if the source image is not available (full path)
-
-    /**
-     * PHPThumb Options
-     * @see http://github.com/masterexploder/PHPThumb/wiki/Getting-Started
-     */
-    Configure::write('ImageEditor.PHPThumb.resizeUp', true);
-    Configure::write('ImageEditor.PHPThumb.jpegQuality', 90);
-    // Configure::write('ImageEditor.PHPThumb.correctPermissions', false);
-    // Configure::write('ImageEditor.PHPThumb.preserveAlpha', true);
-    // Configure::write('ImageEditor.PHPThumb.alphaMaskColor', array(255, 255, 255));
-    // Configure::write('ImageEditor.PHPThumb.preserveTransparency', true);
-    // Configure::write('ImageEditor.PHPThumb.transparencyMaskColor', array(255, 255, 255));
+    // ImageEditor plugin
+    CakePlugin::load('ImageEditor', array('bootstrap' => true));
     ...
+
+and also configure the ImageEditor options in */app/Plugin/ImageEditor/Config/bootstrap.php*
+
 
 #### .htaccess
 
@@ -81,7 +66,7 @@ After that, you'll need to create and make writeable the **ImageEditor.cacheDir*
 Add the **ImageEditor.image** to the $helpers you're using:
 
     ...
-    $helpers = array('Html', 'ImageEditor.Image');
+    public $helpers = array('Html', 'ImageEditor.Image');
     ...
 
 In your views, use the helper to generate IMG tag:
@@ -102,7 +87,7 @@ If the file is updated, you simply delete the folder with its thumbnails and the
 
   a IMG tag that looks like this:
 
-    <img src="http://cms/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19.png" width="200" height="200" alt="Upside down cake" />
+    <img src="http://example.com/thumbs/img/cake.icon.png/eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19.png" width="200" height="200" alt="Upside down cake" />
 
 Because of the rules in the .htaccess file, if the file exists, web server is simply going to serve it so the image generation is not triggered. If it's not there, the plugin controller is called. The string *eyJyb3RhdGVJbWFnZU5EZWdyZWVzIjoxMjAsImFkYXB0aXZlUmVzaXplIjpbMzAwLDMwMF19* is decoded to
 
