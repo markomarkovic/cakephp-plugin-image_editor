@@ -1,6 +1,6 @@
 # CakePHP Image Editor plugin
 
-## Instalation and configuration
+## Installation and configuration
 
 First download or checkout the code for the ImageEditor and for the [PHPThumb][1]. Put the PHPThumb folder inside ImageEditor/Vendor and put the ImageEditor in your app/Plugin directory. The directory structure should look like this:
 
@@ -50,7 +50,7 @@ Then, you'll need to add following code to your */app/webroot/.htaccess* file:
         RewriteCond %{REQUEST_FILENAME} !-f
         RewriteRule ^thumbs/(.*?)$ image_editor/images/show/?imageURL=$1 [QSA,L]
     #   Attention!   ^^^^^^ this should be the same as ImageEditor.cacheDir configuration option.
-    #   Don't forget to create this directory and make it writeable.
+    #   Don't forget to create this directory and make it writable.
 
     ### Cake default
         RewriteCond %{REQUEST_FILENAME} !-d
@@ -58,7 +58,7 @@ Then, you'll need to add following code to your */app/webroot/.htaccess* file:
         RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
     </IfModule>
 
-After that, you'll need to create and make writeable the **ImageEditor.cacheDir** directory and you're ready to start using the plugin!
+After that, you'll need to create and make writable the **ImageEditor.cacheDir** directory and you're ready to start using the plugin!
 
 
 ## Usage
@@ -103,7 +103,7 @@ Because of the rules in the .htaccess file, if the file exists, web server is si
 
 and those actions with other parameters are passed to ImageEditor which generates the thumbnail, saves it to the target file and serves it.
 
-## Licence
+## License
 
 Released under The MIT License
 
