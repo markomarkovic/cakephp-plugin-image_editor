@@ -1,4 +1,5 @@
 # CakePHP Image Editor plugin
+*Attention CakePHP 1.3 users, switch to 1.3 branch.*
 
 ## Installation and configuration
 
