@@ -21,7 +21,6 @@ If you're using git, these steps are easy to do like this:
     $ cd /path/of/your/app/Plugin/
     $ git clone git://github.com/markomarkovic/cakephp-plugin-image_editor.git ImageEditor
     $ cd ImageEditor
-    $ git checkout 2.0
     $ git submodule init
     $ git submodule update
 
