@@ -3,7 +3,8 @@
  * A wrapper class for the PHPThumb Library
  */
 
-App::import('Lib', 'PhpThumbFactory', array('file' => dirname(__FILE__).DS.'PHPThumb'.DS.'src'.DS.'ThumbLib.inc.php'));
+App::import('Vendor', 'ImageEditor.PhpThumbFactory', array('file' => 'PHPThumb'.DS.'src'.DS.'ThumbLib.inc.php'));
+App::uses('Folder', 'Utility');
 
 class PHPThumbWrapper extends Folder {
 
