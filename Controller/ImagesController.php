@@ -5,6 +5,12 @@ class ImagesController extends AppController {
 	var $uses = array();
 	var $components = array('ImageEditor.ImageEditor');
 
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('show');
+	}
+
 	/**
 	 * Calls the ImageEditor to generate the Thumb
 	 */
