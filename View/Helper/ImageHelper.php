@@ -34,7 +34,42 @@ class ImageHelper extends AppHelper {
 	 * @return string completed img tag
 	 * @access public
 	 */
-	function show($path, $options = array(), $editActions = array()) {
+	public function show($path, $options = array(), $editActions = array()) {
+		return $this->Html->image($this->src($path, $editActions), $options);
+	}
+
+	/**
+	 * Creates a path to the transformed image.
+	 *
+	 * ### Usage
+	 *
+	 * Create a resized image:
+	 *
+	 * `echo $this->Image->src('cake_icon.png', array('adaptiveResize' => array(200, 200)));`
+	 *
+	 * Create a rotated, then resized image:
+	 *
+	 * `echo $this->Image->show('cake_icon.png', array(rotateImageNDegrees' => array(-60), 'adaptiveResize' => array(200, 200)));`
+	 *
+	 * @param string $path Path to the image file, relative to the app/webroot/ directory.
+	 * @param array $editActions Array of the actions with their parameters as described in the PHPThumb documentation: http://github.com/masterexploder/PHPThumb/wiki/GD-API
+	 *
+	 * # adaptiveResize ($width, $height)
+	 * # adaptiveResizePercent ($width, $height, $percent = 50)
+	 * # adaptiveResizeQuadrant ($width, $height, $quadrant = 'C')
+	 * # crop ($startX, $startY, $cropWidth, $cropHeight)
+	 * # cropFromCenter ($cropWidth, $cropHeight = null)
+	 * # resize ($maxWidth, $maxHeight)
+	 * # resizePercent ($percent)
+	 * # rotateImage ($direction = 'CW')
+	 * # rotateImageNDegrees ($degrees)
+	 *
+	 *
+	 * @return string img src
+	 * @access public
+	 */
+	public function src($path, $editActions = array())
+	{
 		if (!$cacheDir = Configure::read('ImageEditor.cacheDir')) {
 			trigger_error(__d('image_editor', 'ImageEditor.cacheDir is not defined.'), E_USER_ERROR);
 		}
@@ -48,9 +83,7 @@ class ImageHelper extends AppHelper {
 			$thumbName
 		);
 
-		$path = str_replace('://', 'COLON_SLASH_SLASH', $path); // For remote images
-
-		return $this->Html->image($path, $options);
+		return str_replace('://', 'COLON_SLASH_SLASH', $path); // For remote images
 	}
 
 }
