@@ -4,7 +4,7 @@ class ImageEditorComponent extends Component {
 	var $lib = null;
 	var $cacheDir = null;
 
-	function initialize(&$controller, $settings = array()) {
+	function initialize(Controller $controller, $settings = array()) {
 		if (!isset($this->lib)) {
 			if (!$library = Configure::read('ImageEditor.library')) {
 				trigger_error(__d('image_editor', 'ImageEditor.library is not defined.'), E_USER_ERROR);
